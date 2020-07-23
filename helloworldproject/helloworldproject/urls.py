@@ -5,18 +5,17 @@
 
 from django.contrib import admin
 from django.urls import path
-# 同じ階層のhelloworldfunctionからhelloworldfunction(メソッド)を呼び出す
-from .views import helloworldfunction
-# 同じ階層のhelloworldfunctionからHelloWorldViewクラスを呼び出す
-from .views import HelloWorldView
+#includeメソッドをインポート
+from django.urls import include
 
 #adminというリクエストが投げられると、admin画面を返す
 # どういう画面を返すか=funcrionベースで指定。(functionベースとclassベースで呼び出す方法2種類ある。)
 urlpatterns = [
     #helloにしたので、http://localhost:8000/hello/にアクセスするとadmin画面が出てくる
-    path('hello/', admin.site.urls),
-    #helloworld1のリクエストをもらった際には、helloworldfunctionを返す
-    path('helloworld1/', helloworldfunction),
-    #クラスで指定してブラウザに表示する場合には、as_view()メソッドで指定しなければならない。
-    path('helloworld2/', HelloWorldView.as_view()),
+    path('admin/', admin.site.urls),
+    #アプリへの繋ぎ込みのため
+    #urlを渡す(今回このアプリ側にわたすurlはhelloとした。)
+    #入力：http://localhost:8000/hello/world
+    #出力：worldの部分(http://localhost:8000/hello/world)を、helloworldappアプリ(のurls.py)に返す
+    path("hello/", include('helloworldapp.urls'))
 ]

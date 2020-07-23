@@ -120,7 +120,7 @@ templateもmodelsも機能ごとにごっちゃになった、ファイルをた
 それぞれのアプリの中でmodelやtemplateから画面を作成するという流れが想定されている。
 
 ### urls.py
-リクエストとして、https://aaa/com/news/priceがきたとする
+リクエストとして、https://aaa/com/news/priceがきたとする。
 #### 1.プロジェクトのurls.py
 urlpatterns =[news , アプリのurl]
 - 入力：リクエストのアプリのurlまで
@@ -136,3 +136,7 @@ urlpatterns=[price ,view]
 
 
 (viewの呼びだしはメソッドorクラス)
+
+## アプリ作成
+http://localhost:8000/hello/world/
+にアクセスできるようになった。
